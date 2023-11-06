@@ -18,8 +18,8 @@ public class ConnectFour implements Runnable {
     private int port = 22222;
     private Scanner scanner = new Scanner(System.in);
     private JFrame frame;
-    private final int WIDTH = 750;
-    private final int HEIGHT = 630;
+    private final int WIDTH = 709;
+    private final int HEIGHT = 634;
     private Thread thread;
 
     private Painter painter;
@@ -81,7 +81,7 @@ public class ConnectFour implements Runnable {
         frame.setSize(WIDTH, HEIGHT);
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setResizable(true);
+        frame.setResizable(false);
         frame.setVisible(true);
 
         thread = new Thread(this, "Connect4Game");
@@ -115,12 +115,12 @@ public class ConnectFour implements Runnable {
         }
         // Render game outcome messages
         if (unableToCommunicateWithOpponent) {
-            g.setColor(Color.RED);
+            g.setColor(Color.BLACK);
             g.setFont(font);
             g.drawString(unableToCommunicateWithOpponentString, WIDTH / 2 - 200, HEIGHT / 2);
         } else if (accepted) {
             if (won || enemyWon) {
-                g.setColor(Color.RED);
+                g.setColor(Color.BLACK);
                 g.setFont(largerFont);
                 if (won) {
                     g.drawString(wonString, WIDTH / 2 - 100, HEIGHT / 2);
@@ -128,12 +128,12 @@ public class ConnectFour implements Runnable {
                     g.drawString(enemyWonString, WIDTH / 2 - 120, HEIGHT / 2);
                 }
             } else if (tie) {
-                g.setColor(Color.RED);
+                g.setColor(Color.BLACK);
                 g.setFont(largerFont);
                 g.drawString(tieString, WIDTH / 2 - 175, HEIGHT / 2);
             }
         } else {
-            g.setColor(Color.RED);
+            g.setColor(Color.BLACK);
             g.setFont(font);
             g.drawString(waitingString, WIDTH / 2 - 200, HEIGHT / 2);
         }
